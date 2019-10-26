@@ -1,0 +1,175 @@
+/* Menu*/
+*
+{
+padding: 0px;
+margin:0px;
+font-family: sans-serif;
+}
+
+
+
+#sidebar
+{
+  display: block;
+  position: fixed;
+  width: 240px;
+  height: 40%;
+  background: #151719;
+  margin-top: -20px;
+  border-radius: 1px solid black;
+  left: -240px;
+  transition: all 500ms linear;
+}
+
+#sidebar.active
+{
+ 
+  left: 0px;
+}
+
+#sidebar ul li 
+{
+    display: block;
+    color: rgba(230,230,230, 0.9);
+    list-style: none;
+    padding: 15px 10px;
+    border-bottom: 1px solid rgba(100,100,100, 0.3);
+}
+
+#sidebar ul li:hover
+{
+   
+    background:green;
+    border-bottom: 2px solid #e7480f;
+
+}
+
+#sidebar ul li a:hover
+{
+ 
+  color: #ffd301;
+    
+}
+
+
+#sidebar ul li a 
+{
+    display: block;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+#sidebar .toggle-btn
+{
+    position: absolute;
+    left: 250px;
+    top: 20px;
+}
+
+#sidebar .toggle-btn span
+{
+   display: block;
+   width: 30px;
+   height: 5px;
+   background: #151719;
+   margin: 3px 0px;
+  
+}
+
+
+
+/*Les Billets */
+
+
+h1, h3 {  
+       text-align:center;
+ } 
+
+ .infos{
+  
+    margin-left: 25px;
+    color: red;
+    font-style: italic;
+    font-weight: bold; 
+    font-size: 0.9em;
+ }
+
+ h3 { 
+
+      background-color:black;
+      color:white; 
+      font-size: 2em;   
+      margin-bottom:0px;
+}
+
+ .news p { 
+        background-color:#CCCCCC; 
+        margin-top:0px; 
+ } 
+
+ .news {  
+ width:70%; 
+ margin:auto;
+      
+} 
+
+ a {  
+
+    text-decoration: none;  
+    color: blue;
+}
+
+
+h1, h3 {  
+       text-align:center;
+ } 
+
+ .infos{
+  
+    margin-left: 25px;
+    color: red;
+    font-style: italic;
+    font-weight: bold; 
+    font-size: 0.9em;
+ }
+
+ h3 { 
+
+      background-color:black;
+      height: 25px;
+      padding: 8px;
+      color:white; 
+      font-size: 0.9em;   
+      margin-bottom:0px;
+}
+
+ .news p { 
+        background-color:#CCCCCC; 
+        margin-top:0px; 
+ } 
+
+ .news {  
+ width:70%; 
+ margin:auto;
+      
+} 
+
+ a {  
+
+    text-decoration: none;  
+    color: blue;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
