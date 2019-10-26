@@ -1,95 +1,98 @@
-<?php
-
-require 'admin/database.php';
-
-?>
-
+<!-- Page accueil-->
 <!DOCTYPE html>
 <html>
 <head>
-	<title>burger code</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<script src="assets/jquery/jquery-3.3.1.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="icon" type="image/png" href="images/b2.png">
-	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	  <meta charset="utf-8">
+	  <title>welcome</title>
+	  <meta name="viewport" content="width=device-width,initial-scale=1">
+	  <script src="assets/jquery/jquery-3.3.1.min.js"></script>
+	  <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
+	  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	  <link rel="stylesheet" type="text/css" href="style.menu.css">
 </head>
 <body>
-     <div class="container site">
-	     <h1 class="text-logo"><span class="glyphicon glyphicon-cutlery"></span> Burger code <span class="glyphicon glyphicon-cutlery"></span></h1>
-
-		     <nav>
-		     	  <ul class="nav nav-pills">
-		     	  	<?php
-                     
-                     $db = Database::connect();
-
-                     $statement = $db -> query("SELECT * FROM categories");
-                     $categories = $statement -> fetchAll();
-
-                     foreach($categories as $category){
-                     	if( $category['id'] == '1')
-                     		echo '<li role="presantation" class="active"><a href="#'.$category["id"].'" data-toggle="tab">'.$category["name"].'</a></li>';
-                        else
-                        	echo '<li role="presantation"><a href="#'.$category["id"].'" data-toggle="tab">'.$category["name"].'</a></li>';
-                     	
-                     	
-                     }
-                     	
-                     
-		     	  	?>
-		     	  
-		     	  </ul>
-		     </nav>
-			 
-			 <!--Contient tous les elements de la table pane. Tous les articles sont dans la classe "tab-content" -->
-	         <div class="tab-content">  
-                     <!--Debut tab-pane 1 -->
-                   <?php
-                    
-                     foreach($categories as $category){
-                     	if( $category['id'] == '1')
-                     		echo '<div class="tab-pane active" id="'.$category["id"].'">';
-                        else
-                        	echo '<div class="tab-pane" id="'.$category["id"].'">';
-                     	
-                     echo '<div class="row">';
-
-                   $statement = $db -> prepare("SELECT * FROM items WHERE items.category = ? ");
-                   $statement -> execute(array($category['id']));
-                   while($item = $statement -> fetch()){
-                  
-    	   	    
-	         	   	    	//<!--1er article de la ligne table-panel 1-->
-	         	   	    	 echo  '<div class="col-sm-6 col-md-4">
-	         	   	    	   	    <div class="thumbnail">
-	         	   	    	   	    	  <img src="images/'.$item["image"].'" alt="...">
-	         	   	    	   	    	   <div class="price">'.number_format((float)$item['price'],2,'.', ' ').' €</div>
-	         	   	    	   	    	   <div class="caption">
-	         	   	    	   	    	   	   <h4>'.$item["name"].'</h4>
-	         	   	    	   	    	   	    <p>'.$item["description"].'</p>
-	         	   	    	   	    	   	    <a href="#" class="btn btn-order "role="button"><span class="glyphicon glyphicon-shopping-cart"></span> Commander</a>
-	         	   	    	   	    	   </div>
-	         	   	    	   	    </div>
-	         	   	    	  </div>';
-                              
-
-                                }
-
-                                echo   '</div> 			   
-		                              </div>';
-
-			                   }
-			                   Database::disconnect();
-                             echo '</div>';   //<!--Fin tab-pane Id 1-->
-			                 ?>	
+    <header>
+		        <nav class="navbar navbar-inverse navbar-fixed-top" style="">
 						
-						   
-			
-	               </div> <!--Fin de la table content-->
-	        </div>
-	      
-   </body>
+						  <div class="container-fluid" >
+									<div class="navbar navbar-header">
+										 <button type="button" class="navbar-toggle " data-toggle="collapse" data-target="#monMenu">
+										 	<!--Menu responsive 3 barre icons-->
+												<span class="icon-bar"></span>
+												<span class="icon-bar"></span>
+												<span class="icon-bar"></span>
+										  </button>
+									
+									      <a href="#" class="navbar-brand">MyWorkshop</a>
+									</div>
+									<!--Menu responsive ouverture du menu a partir des 3 barres icons-->
+								    <div class="collapse navbar-collapse" id="monMenu">
+                                         <ul class="nav navbar-nav">
+                                         	<li><a href="#"><span class='glyphicon glyphicon-home'></span> Accueil</a></li>
+											<li><a href="register.php"><span class='glyphicon glyphicon-pencil'></span> Je m'inscris</a></li>
+											<li><a href="connexion.php"><span class="glyphicon glyphicon-log-in"></span> Je me connecte</a></li>
+											<li><a href="contact.php"><span class='glyphicon glyphicon-phone'></span>Nous Contacter</a></li>
+											<li><a href="equipe.php">Qui sommes nous?</a></li>
+
+                                        </ul>
+							    </div> 
+						 </div>
+				</nav>
+		 </header>
+		 <h1 style="margin-top: 70px; text-align: center">Bienvenue sur note site.</h1>
+		 <h2 style="text-align: center">En quoi pouvons-nous vous aidez?</h2>
+
+		  <h1>Les Domaines de Compétence et les projets Réalisés</h1>
+     <div id="monCarousel" class="carousel slide" data-ride="carousel" style="">
+							 <ol class="carousel-indicators">
+									<li data-target="#monCarousel" data-slide-to="0" class="active"></li>
+									<li data-target="#monCarousel" data-slide-to="1"></li>
+									<li data-target="#monCarousel" data-slide-to="2"></li>
+									<li data-target="#monCarousel" data-slide-to="3"></li>
+							 </ol>
+							<div class="carousel-inner" role="listbox">
+									<div class="item active">
+											  <img src="images/secure.png" style="width: 100% ;height:500px;"/>
+											  <div class="carousel-caption">
+												 <h3>Sécurité des Réseaux</h3>
+											  </div>
+									</div>
+									
+									 <div class="item">
+											  <img src="images/switch.png" style="width: 100%;height:500px;"/>
+											  <div class="carousel-caption">
+												  <h4>Réseaux Informatiques</h4>
+											  </div>
+									</div>
+									
+									 <div class="item">
+											  <img src="images/beach.jpg" style="width: 100%; height:500px;"/>
+											  <div class="carousel-caption">
+												 <h4>Waouhh...</h4>
+											  </div>
+									</div>
+									
+									<div class="item">
+											  <img src="images/imag.jpg" style="width: 100%; height:500px;"/>
+											  <div class="carousel-caption">
+												 <h2>cool</h2>
+											  </div>
+									</div>
+							</div>
+							
+                            <a href="#monCarousel"class="left carousel-control" role="button" data-slide="prev">
+								 <span class="glyphicon glyphicon-chevron-left"></span>
+						    </a>
+						    <a href="#monCarousel"class="right carousel-control" role="button" data-slide="next">
+								 <span class="glyphicon glyphicon-chevron-right"></span>
+						    </a>
+					  </div> 
+
+					  <h2>Plus d'infos...</h2>
+<?php
+
+require('footer.php');
+
+?>
+</body>
 </html>
